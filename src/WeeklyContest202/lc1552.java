@@ -1,4 +1,4 @@
-package weeklycontest202;
+package WeeklyContest202;
 
 import java.util.Arrays;
 
