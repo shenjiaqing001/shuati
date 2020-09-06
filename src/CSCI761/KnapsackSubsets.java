@@ -34,6 +34,7 @@ public class KnapsackSubsets {
         KnapsackSubsets ks = new KnapsackSubsets();
 
         System.out.println(ks.problemPartA(new int[]{47, 12, 27, 35, 12, 21, 9, 12, 38, 13}, 10, 100, 6577));
+//        System.out.println(5.0 / 2.0);
     }
 
 }
