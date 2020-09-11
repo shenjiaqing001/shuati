@@ -20,18 +20,15 @@ public class lc560 {
             else
                 sum[i] = nums[i] + sum[i - 1];
 
-            List<Integer> list = map.getOrDefault(sum[i], new LinkedList<>());
-            list.add(i);
-            map.put(sum[i], list);
-
+            map.putIfAbsent(sum[i], new LinkedList<>());
+            map.get(sum[i]).add(i);
         }
         for (int i = 0; i < nums.length; ++i) {
-            System.out.println(sum[i]);
             if (sum[i] == k) res++;
             if (map.containsKey(sum[i] - k)) {
                 List<Integer> list = map.get(sum[i] - k);
                 for (Integer index : list) {
-                    if (index <= i)
+                    if (index < i)
                         res++;
                 }
             }

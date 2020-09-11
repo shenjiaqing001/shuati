@@ -29,7 +29,7 @@ public class lc152 {
                 if (maxMin0 != 0) {
                     int tmp = maxBig0;
                     maxBig0 = maxMin0 * nums[i];
-                    maxMin0 = tmp * nums[i];
+                    maxMin0 = Math.min(tmp * nums[i], nums[i]);
                 } else {
                     max = Math.max(max, maxBig0);
                     if (maxBig0 == 0) {
@@ -40,6 +40,7 @@ public class lc152 {
                     maxBig0 = 0;
                 }
             }
+            max = Math.max(maxBig0, max);
         }
         max = Math.max(maxBig0, max);
         return max;
