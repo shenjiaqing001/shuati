@@ -4,7 +4,7 @@
  * @date Created in 8/19/20
  */
 public class TreeNode {
-    int val;
+    String val;
     TreeNode left;
     TreeNode right;
 
