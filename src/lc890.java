@@ -1,5 +1,3 @@
-package WeeklyContest98;
-
 import java.util.*;
 
 /**
