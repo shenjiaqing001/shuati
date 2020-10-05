@@ -9,7 +9,7 @@ import java.util.List;
  * @date Created in 9/9/20
  */
 public class lc759 {
-    class Interval {
+    private class Interval {
         public int start;
         public int end;
 
