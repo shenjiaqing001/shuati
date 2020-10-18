@@ -34,8 +34,10 @@ public class lc5537 {
         boolean isTrans = false;
         for (int i = 0; i < length; ++i) {
             if (isTrans == false) {
-                if (as[i] != bs[b.length() - i - 1])
+                if (as[i] != bs[b.length() - i - 1]) {
                     isTrans = true;
+                    i--;
+                }
             } else {
                 if (as[i] != as[a.length() - i - 1]) {
                     flag = false;
@@ -50,8 +52,10 @@ public class lc5537 {
 
         for (int i = 0; i < length; ++i) {
             if (isTrans == false) {
-                if (bs[i] != as[b.length() - i - 1])
+                if (bs[i] != as[b.length() - i - 1]) {
                     isTrans = true;
+                    i--;
+                }
             } else {
                 if (bs[i] != bs[a.length() - i - 1]) {
                     flag = false;
@@ -66,8 +70,10 @@ public class lc5537 {
 
         for (int i = 0; i < length; ++i) {
             if (isTrans == false) {
-                if (bs[i] != as[b.length() - i - 1])
+                if (bs[i] != as[b.length() - i - 1]) {
                     isTrans = true;
+                    i--;
+                }
             } else {
                 if (as[i] != as[a.length() - i - 1]) {
                     flag = false;
@@ -82,8 +88,10 @@ public class lc5537 {
 
         for (int i = 0; i < length; ++i) {
             if (isTrans == false) {
-                if (as[i] != bs[b.length() - i - 1])
+                if (as[i] != bs[b.length() - i - 1]) {
                     isTrans = true;
+                    i--;
+                }
             } else {
                 if (bs[i] != bs[a.length() - i - 1]) {
                     flag = false;
