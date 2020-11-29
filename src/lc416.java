@@ -14,7 +14,7 @@ public class lc416 {
         boolean[] dp = new boolean[sum / 2 + 1];
         dp[0] = true;
         for (int i = 0; i < nums.length; ++i) {
-            for (int j = sum; j >= 0; --j) {
+            for (int j = sum / 2; j >= 0; --j) {
                 if (j >= nums[i])
                     dp[j] = dp[j] || dp[j - nums[i]];
             }
