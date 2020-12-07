@@ -12,7 +12,8 @@ public class lc117 {
         Node head = root;
         List<Node> queue = new LinkedList<>();
         queue.add(head);
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty())
+        {
             Node tmp = null;
             int size = queue.size();
             for (int i = 0; i < size; ++i) {
