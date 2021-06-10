@@ -20,4 +20,5 @@ public class lc1167 {
         }
         return res;
     }
+
 }

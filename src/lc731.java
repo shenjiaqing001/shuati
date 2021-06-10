@@ -25,11 +25,11 @@ public class lc731 {
             Map.Entry<Integer, Integer> startFloor = map.floorEntry(start);
             Map.Entry<Integer, Integer> startCeiling = map.ceilingEntry(start);
             if (startFloor != null && startFloor.getValue() > start) {
-
+                // todo
                 return false;
             }
             if (startCeiling != null && startCeiling.getKey() < end) {
-
+                // todo
                 return false;
             }
             map.put(start, end);

@@ -5,21 +5,17 @@
  */
 public class lc121 {
     public int maxProfit(int[] prices) {
-        int low = Integer.MAX_VALUE;
-        int high = Integer.MAX_VALUE;
         int max = 0;
+        int min = 10000;
+        int res = 0;
         for (int i = 0; i < prices.length; ++i) {
-            if (prices[i] < low) {
-                max = Math.max(max, high - low);
-                low = prices[i];
-                high = low;
-            } else {
-                if (prices[i] > high) {
-                    high = prices[i];
-                    max = Math.max(max, high - low);
-                }
+            max = Math.max(prices[i], max);
+            res = Math.max(res, max - min);
+            if (prices[i] < min) {
+                min = prices[i];
+                max = prices[i];
             }
         }
-        return max;
+        return res;
     }
 }

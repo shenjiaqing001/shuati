@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
  * @description
  * @date Created in 2020/11/1
  */
-public class lc5556 {
+public class lc1642 {
     public int furthestBuilding(int[] heights, int bricks, int ladders) {
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for (int i = 1; i < heights.length; ++i) {
@@ -16,7 +16,7 @@ public class lc5556 {
             pq.add(diff);
             System.out.println(diff);
             if (pq.size() > ladders) {
-                System.out.println(i + " " + pq.peek());
+//                System.out.println(i + " " + pq.peek());
                 bricks -= pq.poll();
             }
             if (bricks < 0) return i - 1;

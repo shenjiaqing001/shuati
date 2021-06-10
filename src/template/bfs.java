@@ -18,7 +18,7 @@ public class bfs {
 
         for (int i = 0; i < x; ++i) {
             for (int j = 0; j < y; ++j) {
-                if (grid[i][j] == 1 && visited[i][j] == false) {
+                if (grid[i][j] == 1 && !visited[i][j]) {
                     bfs(grid, i, j, visited);
                 }
             }
@@ -40,7 +40,7 @@ public class bfs {
                 int nexty = now[1] + dir[i][1];
                 if (nextx < 0 || nexty < 0 || nextx >= grid.length || nexty >= grid[0].length)
                     continue;
-                if (grid[nextx][nexty] == 0 || visited[nextx][nexty] == true)
+                if (grid[nextx][nexty] == 0 || visited[nextx][nexty])
                     continue;
 
                 visited[nextx][nexty] = true;

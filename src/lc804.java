@@ -6,8 +6,6 @@ import java.util.HashSet;
  * @date Created in 2020/11/23
  */
 public class lc804 {
-
-
     public int uniqueMorseRepresentations(String[] words) {
         String[] morseCode = {
                 ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..",
