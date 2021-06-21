@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,7 +11,7 @@ public class lc77 {
 
         List<List<Integer>> res = new ArrayList<>();
 
-        dfs(res, new ArrayList<Integer>(), n, k, 1);
+        dfs(res, new ArrayList<>(), n, k, 1);
         return res;
 
 

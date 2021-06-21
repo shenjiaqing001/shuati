@@ -7,7 +7,7 @@ import java.util.*;
  * @description
  * @date Created in 2020/9/19
  */
-public class lc5504 {
+public class lc1590 {
     public int minSubarray(int[] nums, int p) {
         Map<Integer, Integer> map = new HashMap<>();
         int[] dp = new int[nums.length];

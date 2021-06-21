@@ -1,6 +1,6 @@
 package BiweeklyContest33;
 
-import javafx.util.Pair;
+//import javafx.util.Pair;
 
 import java.util.*;
 
@@ -36,7 +36,7 @@ public class lc2 {
         }
 
         for (int i = 0; i < n; ++i) {
-            if (visited[i] == false) {
+            if (!visited[i]) {
                 dfs(i, visited, graph);
                 res.add(i);
             }
@@ -45,10 +45,10 @@ public class lc2 {
     }
 
     public void dfs(int from, boolean[] visited, List<Integer>[] graph) {
-        if (visited[from] == true) return;
+        if (visited[from]) return;
         visited[from] = true;
         for (Integer next : graph[from]) {
-            if (visited[next] == false)
+            if (!visited[next])
                 dfs(next, visited, graph);
         }
     }

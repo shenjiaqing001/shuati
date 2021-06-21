@@ -1,5 +1,3 @@
-import org.w3c.dom.ls.LSOutput;
-
 /**
  * @author Jiaqing Shen
  * @description
@@ -10,36 +8,26 @@ public class lc159 {
         if (s.length() <= 2) return s.length();
 
         char[] c = s.toCharArray();
-        int max = 0;
-        int tmp = 0;
-        int pos1 = -1;
-        int pos2 = -1;
+        int[] count = new int[256];
+        int n = 0;
 
-        for (int i = 0; i < c.length; ++i) {
-            if (pos1 == -1) {
-                pos1 = i;
-                tmp = 1;
-            } else if (s.charAt(i) == s.charAt(i - 1)) {
-                tmp++;
-            } else {
-                if (pos2 == -1) {
-                    pos2 = i;
-                    tmp++;
-                } else {
-                    if (s.charAt(pos1) == s.charAt(i)) {
-                        pos1 = pos2;
-                        pos2 = i;
-                        tmp++;
-                    } else {
-                        pos1 = pos2;
-                        pos2 = i;
-                        max = Math.max(tmp, max);
-                        tmp = i - pos1 + 1;
-                    }
-                }
+        int left = 0;
+        int max = 0;
+        int right = 0;
+        while (right < s.length()) {
+            if (count[c[right]] == 0) {
+                n++;
             }
+            count[c[right]]++;
+            while (n > 2) {
+                count[c[left]]--;
+                if (count[c[left]] == 0) n--;
+                left++;
+            }
+            right++;
+            max = Math.max(max, right - left);
         }
-        max = Math.max(tmp, max);
+
         return max;
     }
 
