@@ -23,7 +23,6 @@ public class lc118 {
         if (numRows == 2) return res;
 
         List<Integer> last = tmp;
-        ;
         for (int i = 3; i <= numRows; ++i) {
             tmp = new ArrayList<>();
             tmp.add(1);
