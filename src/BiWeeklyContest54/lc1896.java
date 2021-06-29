@@ -27,10 +27,45 @@ public class lc1896 {
     public int minOperationsToFlip(String expression) {
         BitTreeNode root = buildTree("(" + expression + ")");
         System.out.println(root);
+        int res = dfs(root);
 
 
+        return cal(root, 1 - res);
+    }
 
+    public int cal(BitTreeNode root, int to) {
+        if (root.value == to) return 0;
+        if (to == 1) {
+            if (root.c == '0') return 1;
+            if (root.c == '|') {
+                return Math.min(cal(root.left, to), cal(root.right, to));
+            } else if (root.c == '&') {
+                return Math.min(cal(root.left, to), cal(root.right, to)) + 1;
+            }
+        } else if (to == 0) {
+            if (root.c == '1') return 1;
+            if (root.c == '|') {
+                return Math.min(cal(root.left, to), cal(root.right, to)) + 1;
+            } else if (root.c == '&') {
+                return Math.min(cal(root.left, to), cal(root.right, to));
+            }
+        }
         return 0;
+    }
+
+    public int dfs(BitTreeNode root) {
+        if (root.c == '1') return 1;
+        if (root.c == '0') return 0;
+
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+
+        if (root.c == '|') {
+            root.value = left | right;
+        } else {
+            root.value = left & right;
+        }
+        return root.value;
     }
 
 
