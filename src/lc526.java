@@ -26,26 +26,25 @@ public class lc526 {
             {1, 3, 5, 15}
     };
 
-    int count = 0;
-
     public int countArrangement(int N) {
         Set<Integer> set = new HashSet<>();
-        dfs(set, 1, N);
-        return count;
+        return dfs(set, 1, N);
     }
 
-    public void dfs(Set<Integer> set, int now, int total) {
+    public int dfs(Set<Integer> set, int now, int total) {
         if (now == total + 1) {
-            count++;
+            return 1;
         } else {
+            int count = 0;
             for (int i = 1; i <= total; ++i) {
                 if (set.contains(i)) continue;
                 if (now % i == 0 || i % now == 0) {
                     set.add(i);
-                    dfs(set, now + 1, total);
+                    count += dfs(set, now + 1, total);
                     set.remove(i);
                 }
             }
+            return count;
         }
     }
 
