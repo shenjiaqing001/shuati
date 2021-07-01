@@ -5,7 +5,7 @@ package WeeklyContest242;
  * @description
  * @date Created in 2021/5/22
  */
-public class lc1 {
+public class lc1869 {
     public boolean checkZeroOnes(String s) {
         int[] count = new int[2];
         char c = s.charAt(0);

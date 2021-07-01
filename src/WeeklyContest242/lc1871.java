@@ -1,8 +1,6 @@
 package WeeklyContest242;
 
-import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
@@ -10,7 +8,7 @@ import java.util.Queue;
  * @description
  * @date Created in 2021/5/22
  */
-public class lc3 {
+public class lc1871 {
     public boolean canReach(String s, int minJump, int maxJump) {
         char[] c = s.toCharArray();
         int n = s.length();
