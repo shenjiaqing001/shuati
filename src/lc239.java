@@ -8,22 +8,24 @@ import java.util.LinkedList;
  */
 public class lc239 {
     public int[] maxSlidingWindow(int[] nums, int k) {
-        Deque<int[]> q = new LinkedList<>();
+        Deque<int[]> deque = new LinkedList<>();
+
         for (int i = 0; i < k; ++i) {
-            while (!q.isEmpty() && q.peekLast()[1] < nums[i]) q.pollLast();
-            q.addLast(new int[]{i, nums[i]});
+            while (!deque.isEmpty() && deque.peekLast()[1] < nums[i]) deque.pollLast();
+            deque.offerLast(new int[]{i, nums[i]});
         }
+
         int[] res = new int[nums.length - k + 1];
-        int now = 0;
-        res[now++] = q.peekFirst()[1];
+        int pos = 0;
+
+        res[pos++] = deque.peekFirst()[1];
         for (int i = k; i < nums.length; ++i) {
-            if (q.peekFirst()[0] + k == i) {
-                q.pollFirst();
-            }
-            while (!q.isEmpty() && q.peekLast()[1] < nums[i]) q.pollLast();
-            q.addLast(new int[]{i, nums[i]});
-            res[now++] = q.peekFirst()[1];
+            while (!deque.isEmpty() && deque.peekFirst()[0] <= i - k) deque.pollFirst();
+            while (!deque.isEmpty() && deque.peekLast()[1] < nums[i]) deque.pollLast();
+            deque.offer(new int[]{i, nums[i]});
+            res[pos++] = deque.peekFirst()[1];
         }
+
         return res;
     }
 }
