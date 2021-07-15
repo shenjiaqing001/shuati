@@ -8,7 +8,7 @@ import java.util.Map;
  * @description
  * @date Created in 2021/1/31
  */
-public class lc2 {
+public class lc1743 {
     public class node {
         int left;
         int right;

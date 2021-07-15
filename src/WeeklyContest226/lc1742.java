@@ -8,7 +8,7 @@ import java.util.Map;
  * @description
  * @date Created in 2021/1/31
  */
-public class lc1 {
+public class lc1742 {
     public int countBalls(int lowLimit, int highLimit) {
         int max = 0;
         Map<Integer, Integer> map = new HashMap<>();

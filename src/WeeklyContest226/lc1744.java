@@ -10,7 +10,7 @@ import java.util.Map;
  * @description
  * @date Created in 2021/1/31
  */
-public class lc3 {
+public class lc1744 {
     public boolean[] canEat(int[] candiesCount, int[][] queries) {
         int n = candiesCount.length;
         long[] sum = new long[n];
