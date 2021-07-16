@@ -8,7 +8,7 @@ import java.util.Map;
  * @description
  * @date Created in 2021/4/3
  */
-public class lc3 {
+public class lc1814 {
     public int countNicePairs(int[] nums) {
         Map<Long, Long> map = new HashMap<>();
         long res = 0;
@@ -36,7 +36,7 @@ public class lc3 {
     }
 
     public static void main(String[] args) {
-        lc3 test = new lc3();
+        lc1814 test = new lc1814();
         long a = 10;
         System.out.println(a * (a - 1) / 2);
         System.out.println(test.reverseNumber(200000));

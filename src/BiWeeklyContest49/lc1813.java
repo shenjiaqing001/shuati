@@ -5,7 +5,7 @@ package BiWeeklyContest49;
  * @description
  * @date Created in 2021/4/3
  */
-public class lc2 {
+public class lc1813 {
     public boolean areSentencesSimilar(String sentence1, String sentence2) {
         String[] strs1 = sentence1.split(" ");
         String[] strs2 = sentence2.split(" ");
