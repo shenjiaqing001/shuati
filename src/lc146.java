@@ -1,4 +1,3 @@
-import java.nio.charset.IllegalCharsetNameException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,15 +66,13 @@ public class lc146 {
                 leftHead = now;
                 map.put(key, now);
                 size++;
-            }
-            else if (capacity == 1){
+            } else if (capacity == 1) {
                 map.remove(leftHead.key);
-                Node now = new Node(key,value);
+                Node now = new Node(key, value);
                 leftHead = now;
                 rightHead = now;
-                map.put(key,now);
-            }
-            else {
+                map.put(key, now);
+            } else {
                 if (map.containsKey(key)) {
                     Node now = map.get(key);
                     now.val = value;

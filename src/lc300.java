@@ -6,20 +6,24 @@
 public class lc300 {
 
     public int lengthOfLIS(int[] nums) {
-        int[] dp = new int[nums.length];
+        int[] lis = new int[nums.length];
         int size = 0;
-        for (int i = 0; i < nums.length; ++i) {
-            int now = nums[i];
+        for (int num : nums) {
             int lo = 0;
             int hi = size;
-            while (lo != hi) {
+
+            while (lo < hi) {
                 int mid = (lo + hi) / 2;
-                if (now <= dp[mid]) hi = mid;
-                else lo = mid + 1;
+                if (lis[mid] < num)
+                    lo = mid + 1;
+                else
+                    hi = mid;
             }
-            dp[lo] = now;
+            lis[lo] = num;
             if (lo == size) size++;
+
         }
+
         return size;
     }
 

@@ -31,7 +31,6 @@ public class lc295 {
                 return large.peek();
             else
                 return (large.peek() + small.peek()) / 2.0;
-
         }
     }
 
