@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Jiaqing Shen
@@ -18,6 +15,33 @@ public class lc187 {
             map.put(tmp, map.getOrDefault(tmp, 0) + 1);
             if (map.get(tmp) == 2)
                 res.add(tmp);
+        }
+        return res;
+    }
+
+    public List<String> findRepeatedDnaSequences2(String s) {
+        long base = 26;
+        List<String> res = new LinkedList<>();
+        if (s.length() < 10) return res;
+        Set<Long> set = new HashSet<>();
+        Set<Long> resSet = new HashSet<>();
+        long hash = 0;
+        long pow_base = 1;
+        char[] c = s.toCharArray();
+        for (int i = 1; i < 10; ++i) pow_base *= base;
+        for (int i = 0; i < 10; ++i) hash = base * hash + c[i] - 'a';
+        set.add(hash);
+        for (int i = 10; i < c.length; ++i) {
+            hash -= pow_base * (c[i - 10] - 'a');
+            hash = 26 * hash + c[i] - 'a';
+            if (set.contains(hash)) {
+                if (!resSet.contains(hash)) {
+                    res.add(s.substring(i - 10 + 1, i + 1));
+                    resSet.add(hash);
+                }
+            } else {
+                set.add(hash);
+            }
         }
         return res;
     }
