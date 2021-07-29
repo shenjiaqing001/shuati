@@ -29,14 +29,18 @@ public class lc1044 {
 
         long pow_base = 1;
         long hash = 0;
+        // long mod = (long) 1_000_003 * 1_000_003 + 7;
         for (int i = 0; i < length; ++i) pow_base = pow_base * base;
+        // for (int i = 0; i < length; ++i) pow_base = pow_base * base % mod;
         Set<Long> set = new HashSet<>();
 
         char[] c = s.toCharArray();
         for (int i = 0; i < c.length; ++i) {
             hash = (hash * base + c[i] - 'a');
+            // hash = (hash * base % mod + c[i] - 'a') % mod;
             if (i >= length) {
                 hash = (hash - pow_base * (c[i - length] - 'a'));
+                // hash = ((hash - pow_base * (c[i - length] - 'a') % mod) % mod + mod) % mod;
             }
 
             if (i >= length - 1) {
