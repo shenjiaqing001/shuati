@@ -1,5 +1,3 @@
-import template.trie;
-
 /**
  * @author Jiaqing Shen
  * @description
