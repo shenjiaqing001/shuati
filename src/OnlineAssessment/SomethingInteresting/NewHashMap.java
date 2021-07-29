@@ -1,4 +1,4 @@
-package SomethingInteresting;
+package OnlineAssessment.SomethingInteresting;
 
 import java.util.HashMap;
 import java.util.Map;

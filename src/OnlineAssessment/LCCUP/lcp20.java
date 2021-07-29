@@ -1,4 +1,4 @@
-package LCCUP;
+package OnlineAssessment.LCCUP;
 
 import java.util.*;
 

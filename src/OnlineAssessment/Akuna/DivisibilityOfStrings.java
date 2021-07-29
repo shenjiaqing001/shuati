@@ -1,4 +1,4 @@
-package Akuna;
+package OnlineAssessment.Akuna;
 
 /**
  * @author Jiaqing Shen

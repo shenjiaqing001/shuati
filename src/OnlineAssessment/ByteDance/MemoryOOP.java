@@ -1,7 +1,5 @@
-package ByteDance;
+package OnlineAssessment.ByteDance;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**

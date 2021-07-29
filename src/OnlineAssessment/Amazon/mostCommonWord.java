@@ -1,4 +1,4 @@
-package Amazon;
+package OnlineAssessment.Amazon;
 
 import java.util.HashMap;
 import java.util.HashSet;

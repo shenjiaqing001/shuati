@@ -1,6 +1,4 @@
-package Akuna;
-
-import template.trie;
+package OnlineAssessment.Akuna;
 
 import java.util.ArrayList;
 import java.util.List;

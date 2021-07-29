@@ -1,6 +1,5 @@
-package NOIP普及组2020;
+package OnlineAssessment.NOIP普及组2020;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**

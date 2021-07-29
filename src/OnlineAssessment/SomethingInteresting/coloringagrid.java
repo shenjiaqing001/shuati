@@ -1,4 +1,4 @@
-package SomethingInteresting;
+package OnlineAssessment.SomethingInteresting;
 
 /**
  * @author Jiaqing Shen
