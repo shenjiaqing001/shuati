@@ -1,7 +1,5 @@
 package WeeklyContest211;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -9,7 +7,7 @@ import java.util.TreeSet;
  * @description
  * @date Created in 2020/10/18
  */
-public class lc5544 {
+public class lc1625 {
     public String findLexSmallestString(String s, int a, int b) {
         TreeSet<String> set = new TreeSet<>();
         dfs(set, s, a, b);

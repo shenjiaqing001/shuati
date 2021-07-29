@@ -1,14 +1,11 @@
 package WeeklyContest211;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author Jiaqing Shen
  * @description
  * @date Created in 2020/10/18
  */
-public class lc5543 {
+public class lc1624 {
     public int maxLengthBetweenEqualCharacters(String s) {
         int max = -1;
         int[] left = new int[26];

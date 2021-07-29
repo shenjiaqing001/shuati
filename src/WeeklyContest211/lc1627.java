@@ -8,7 +8,7 @@ import java.util.List;
  * @description
  * @date Created in 2020/10/18
  */
-public class lc5128 {
+public class lc1627 {
     int[] p;
 
     int get(int x) {

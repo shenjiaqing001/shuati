@@ -8,7 +8,7 @@ import java.util.Comparator;
  * @description
  * @date Created in 2020/10/18
  */
-public class lc5545 {
+public class lc1626 {
     public class People {
         int score;
         int age;
@@ -32,28 +32,27 @@ public class lc5545 {
             }
         });
 
-        for (int i = 0; i < people.length; ++i) {
-            System.out.println(people[i].age + " " + people[i].score);
-        }
+        // for (int i = 0; i < people.length; ++i) {
+        //     System.out.println(people[i].age + " " + people[i].score);
+        // }
 
         int[] dp = new int[scores.length];
         int max = 0;
         for (int i = 0; i < scores.length; ++i) {
             dp[i] = people[i].score;
             for (int j = 0; j < i; ++j) {
-                if (people[j].score >= people[i].score) {
+                if (people[i].score >= people[j].score) {
                     dp[i] = Math.max(dp[i], dp[j] + people[i].score);
                 }
             }
             max = Math.max(max, dp[i]);
-            System.out.println(dp[i]);
+            // System.out.println(dp[i]);
         }
         return max;
     }
 
-
     public static void main(String[] args) {
-        lc5545 t = new lc5545();
+        lc1626 t = new lc1626();
 
         System.out.println(t.bestTeamScore(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 new int[]{811, 364, 124, 873, 790, 656, 581, 446, 885, 134}));
