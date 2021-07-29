@@ -1,4 +1,4 @@
-package template;
+package z.template;
 
 /**
  * @author Jiaqing Shen

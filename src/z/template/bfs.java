@@ -1,4 +1,4 @@
-package template;
+package z.template;
 
 import java.util.LinkedList;
 import java.util.Queue;
