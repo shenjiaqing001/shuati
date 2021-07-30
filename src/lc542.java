@@ -20,7 +20,6 @@ public class lc542 {
                 }
             }
         }
-
         int[][] dir = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
         while (!q.isEmpty()) {
