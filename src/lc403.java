@@ -12,9 +12,9 @@ public class lc403 {
     public boolean canCross(int[] stones) {
         if (stones.length == 1) return true;
         Map<Integer, Set<Integer>> map = new HashMap<>();
-        for (int i = 0; i < stones.length; ++i) {
-            if (!map.containsKey(stones[i]))
-                map.put(stones[i], new HashSet<>());
+        for (int stone : stones) {
+            if (!map.containsKey(stone))
+                map.put(stone, new HashSet<>());
         }
         return dfs(map, stones[0], 0, stones[stones.length - 1]);
     }
