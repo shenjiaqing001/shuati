@@ -5,7 +5,7 @@ package WeeklyContest243;
  * @description
  * @date Created in 2021/5/29
  */
-public class lc2 {
+public class lc1881 {
     public String maxValue(String n, int x) {
         StringBuilder sb = new StringBuilder(n);
         if (sb.charAt(0) != '-') {

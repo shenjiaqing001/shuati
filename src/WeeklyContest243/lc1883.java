@@ -5,7 +5,7 @@ package WeeklyContest243;
  * @description
  * @date Created in 2021/5/29
  */
-public class lc4 {
+public class lc1883 {
     public int minSkips(int[] dist, int speed, int hoursBefore) {
         int hours = 0;
         int skip = 0;

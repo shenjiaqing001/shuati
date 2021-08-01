@@ -5,7 +5,7 @@ package WeeklyContest243;
  * @description
  * @date Created in 2021/5/29
  */
-public class lc1 {
+public class lc1880 {
     public boolean isSumEqual(String firstWord, String secondWord, String targetWord) {
         int a = 0;
         int b = 0;

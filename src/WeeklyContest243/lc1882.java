@@ -7,7 +7,7 @@ import java.util.*;
  * @description
  * @date Created in 2021/5/29
  */
-public class lc3 {
+public class lc1882 {
     public int[] assignTasks(int[] servers, int[] tasks) {
         int n = servers.length;
         PriorityQueue<int[]> taskpq = new PriorityQueue<>((o1, o2) -> o1[0] - o2[0]);
@@ -49,7 +49,7 @@ public class lc3 {
     }
 
     public static void main(String[] args) {
-        lc3 t = new lc3();
+        lc1882 t = new lc1882();
         t.assignTasks(new int[]{3, 3, 2}, new int[]{1, 2, 3, 2, 1, 2});
     }
 }
