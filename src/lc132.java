@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * @author Jiaqing Shen
@@ -15,8 +14,7 @@ public class lc132 {
         for (int i = 0; i < s.length(); ++i) {
             int min = i;
             for (int j = 0; j <= i; ++j) {
-                if (s.charAt(i) == s.charAt(j) &&
-                        (i - j <= 2 || dp[i - 1][j + 1])) {
+                if (s.charAt(i) == s.charAt(j) && (i - j <= 2 || dp[i - 1][j + 1])) {
                     dp[j][i] = true;
                     dp[i][j] = true;
                     if (j == 0)
