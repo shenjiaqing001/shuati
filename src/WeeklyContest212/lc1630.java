@@ -9,7 +9,7 @@ import java.util.List;
  * @description
  * @date Created in 2020/10/25
  */
-public class lc5547 {
+public class lc1630 {
     public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
         List<Boolean> res = new ArrayList<>();
         int m = l.length;

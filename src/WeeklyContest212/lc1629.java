@@ -5,7 +5,7 @@ package WeeklyContest212;
  * @description
  * @date Created in 2020/10/25
  */
-public class lc5546 {
+public class lc1629 {
     public char slowestKey(int[] releaseTimes, String keysPressed) {
         char[] c = keysPressed.toCharArray();
         int last = 0;

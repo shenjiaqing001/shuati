@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
  * @description
  * @date Created in 2020/10/25
  */
-public class lc5548 {
+public class lc1631 {
     public int minimumEffortPath(int[][] heights) {
         PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>() {
             @Override
