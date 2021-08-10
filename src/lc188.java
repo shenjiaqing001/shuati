@@ -1,3 +1,5 @@
+
+
 /**
  * @author Jiaqing Shen
  * @description
@@ -45,4 +47,31 @@ public class lc188 {
         return res;
     }
 
+    public int maxProfit2(int k, int[] prices) {
+        if (prices.length <= 1) return 0;
+        int n = prices.length;
+        int[][] dp = new int[k][2];
+
+        for (int i = 0; i < k; ++i) {
+            dp[i][0] = -1005;
+            dp[i][1] = 0;
+        }
+
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < k; ++j) {
+                if (j == 0) {
+                    dp[j][0] = Math.max(dp[j][0], -prices[i]);
+                } else {
+                    dp[j][0] = Math.max(dp[j][0], dp[j - 1][1] - prices[i]);
+                }
+                dp[j][1] = Math.max(dp[j][1], dp[j][0] + prices[i]);
+            }
+        }
+        int max = 0;
+        for (int i = 0; i < k; ++i) {
+            max = Math.max(dp[i][1], max);
+        }
+        return max;
+    }
 }
