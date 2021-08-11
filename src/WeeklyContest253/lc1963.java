@@ -23,4 +23,18 @@ public class lc1963 {
         }
         return (deque.size() / 2 + 1) / 2;
     }
+
+    public int minSwaps2(String s) {
+        int left = 0;
+        int count = 0;
+        for (char c : s.toCharArray()) {
+            if (c == '[') {
+                left++;
+            } else {
+                if (left > 0) left--;
+                else count++;
+            }
+        }
+        return (count + 1) / 2;
+    }
 }
