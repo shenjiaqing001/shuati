@@ -35,10 +35,8 @@ public class lc1152 {
             for (int i = 0; i < list.size(); ++i) {
                 for (int j = i + 1; j < list.size(); ++j) {
                     for (int k = j + 1; k < list.size(); ++k) {
-                        StringBuilder sb = new StringBuilder();
-                        sb.append(list.get(i).webside).append(" ").append(list.get(j).webside).append(" ")
-                                .append(list.get(k).webside);
-                        String str = sb.toString();
+                        String str = list.get(i).webside + " " + list.get(j).webside + " " +
+                                list.get(k).webside;
                         if (!set.contains(str)) {
                             set.add(str);
                             count.put(str, count.getOrDefault(str, 0) + 1);
