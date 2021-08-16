@@ -26,4 +26,5 @@ public class lc1249 {
         }
         return res.reverse().toString();
     }
+
 }
