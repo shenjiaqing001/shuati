@@ -69,7 +69,7 @@ public class lc76 {
             right++;
 
             while (count == 0 && left <= right) {
-                if (res == "" || res.length() > right - left) {
+                if (res.equals("") || res.length() > right - left) {
                     res = s.substring(left, right);
                 }
                 if (tar[s.charAt(left)] >= 0) {
@@ -77,6 +77,31 @@ public class lc76 {
                 }
                 tar[s.charAt(left)]++;
                 left++;
+            }
+        }
+        return res;
+    }
+
+    public String minWindow2(String s, String target) {
+        int[] count = new int[128];
+        for (char c : target.toCharArray()) count[c]++;
+
+        int left = 0;
+        int right = 0;
+        String res = "";
+        int n = target.length();
+        char[] c = s.toCharArray();
+        while (right < c.length) {
+            if (count[c[right]] > 0) {
+                n--;
+            }
+            count[c[right++]]--;
+            while (n == 0 && left <= right) {
+                if (res.equals("") || res.length() > right - left) {
+                    res = s.substring(left, right);
+                }
+                if (count[c[left]] >= 0) n++;
+                count[c[left++]]++;
             }
         }
         return res;
