@@ -8,31 +8,27 @@ import java.util.TreeMap;
  */
 public class lc731 {
     class MyCalendarTwo {
-        TreeMap<Integer, Integer> once = new TreeMap();
-        TreeMap<Integer, Integer> twice = new TreeMap();
+        TreeMap<Integer, Integer> map = new TreeMap<>();
 
         public MyCalendarTwo() {
 
         }
 
         public boolean book(int start, int end) {
-            if (checkValid(once, start, end)) return true;
-            if (checkValid(twice, start, end)) return true;
-            return false;
-        }
+            map.put(start, map.getOrDefault(start, 0) + 1);
+            map.put(end, map.getOrDefault(end, 0) - 1);
+            int count = 0;
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                count += entry.getValue();
+                if (count > 2) {
+                    map.put(start, map.getOrDefault(start, 0) - 1);
+                    if (map.get(start) == 0) map.remove(start);
 
-        public boolean checkValid(TreeMap<Integer, Integer> map, int start, int end) {
-            Map.Entry<Integer, Integer> startFloor = map.floorEntry(start);
-            Map.Entry<Integer, Integer> startCeiling = map.ceilingEntry(start);
-            if (startFloor != null && startFloor.getValue() > start) {
-                // todo
-                return false;
+                    map.put(end, map.getOrDefault(end, 0) + 1);
+                    if (map.get(end) == 0) map.remove(end);
+                    return false;
+                }
             }
-            if (startCeiling != null && startCeiling.getKey() < end) {
-                // todo
-                return false;
-            }
-            map.put(start, end);
             return true;
         }
     }
