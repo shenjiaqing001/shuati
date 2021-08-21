@@ -8,25 +8,32 @@ public class lc1066 {
 
     public int assignBikes(int[][] workers, int[][] bikes) {
         boolean[] visited = new boolean[bikes.length];
+        int n = workers.length;
+        int m = bikes.length;
+        int[][] dp = new int[n][m];
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                dp[i][j] = dis(workers[i], bikes[j]);
+            }
+        }
 
-        dfs(workers, bikes, visited, 0, 0);
+        dfs(dp, visited, 0, 0);
         return min;
     }
 
-    public void dfs(int[][] workers, int[][] bikes, boolean[] visited, int now, int dis) {
-        if (now == workers.length) {
+    public void dfs(int[][] dp, boolean[] visited, int now, int dis) {
+        if (now == dp.length) {
             min = Math.min(min, dis);
             return;
         }
 
-        for (int i = 0; i < bikes.length; ++i) {
-            if (visited[i] == false) {
+        for (int i = 0; i < dp[0].length; ++i) {
+            if (!visited[i]) {
                 visited[i] = true;
-                dfs(workers, bikes, visited, now + 1, dis + dis(workers[now], bikes[i]));
+                dfs(dp, visited, now + 1, dis + dp[now][i]);
                 visited[i] = false;
             }
         }
-
     }
 
     public int dis(int[] worker, int[] bike) {
