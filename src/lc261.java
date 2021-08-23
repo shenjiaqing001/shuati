@@ -17,18 +17,15 @@ public class lc261 {
     public boolean validTree(int n, int[][] edges) {
         p = new int[n];
         for (int i = 0; i < n; ++i) p[i] = i;
+        int count = 1;
 
-        for (int i = 0; i < edges.length; ++i) {
-            if (get(edges[i][0]) != get(edges[i][1])) {
-                union(edges[i][0], edges[i][1]);
+        for (int[] edge : edges) {
+            if (get(edge[0]) != get(edge[1])) {
+                union(edge[0], edge[1]);
+                count++;
             } else
                 return false;
         }
-        int root = get(0);
-        for (int i = 0; i < n; ++i) {
-            if (root != get(i)) return false;
-        }
-
-        return true;
+        return count == n;
     }
 }
