@@ -23,4 +23,32 @@ public class lc354 {
 
         return max;
     }
+
+
+    public int maxEnvelopes2(int[][] envelopes) {
+        Arrays.sort(envelopes, (o1, o2) -> (o1[0] == o2[0] ? o2[1] - o1[1] : o1[0] - o2[0]));
+        int n = envelopes.length;
+        int[] dp = new int[n];
+        int index = 0;
+
+        for (int[] envelope : envelopes) {
+            if (index == 0 || dp[index - 1] < envelope[1]) {
+                dp[index++] = envelope[1];
+            } else {
+                int lo = 0;
+                int hi = index - 1;
+                while (lo < hi) {
+                    int mid = (lo + hi) / 2;
+                    if (dp[mid] < envelope[1]) {
+                        lo = mid + 1;
+                    } else {
+                        hi = mid;
+                    }
+                }
+                dp[lo] = envelope[1];
+            }
+        }
+        return index;
+    }
+
 }
