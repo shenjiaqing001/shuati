@@ -5,12 +5,12 @@ package BiweeklyContest33;
  * @description
  * @date Created in 8/22/20
  */
-public class lc3 {
+public class lc1558 {
     public int minOperations(int[] nums) {
         int max = 0;
         int total = 0;
-        for (int i = 0; i < nums.length; ++i) {
-            int[] res = op(nums[i]);
+        for (int num : nums) {
+            int[] res = op(num);
             max = Math.max(max, res[1]);
             total += res[0];
         }
@@ -24,11 +24,9 @@ public class lc3 {
             if (num % 2 == 1) {
                 plustime++;
                 num--;
-                continue;
             } else {
                 num /= 2;
                 doubletime++;
-                continue;
             }
         }
         return new int[]{plustime, doubletime};
