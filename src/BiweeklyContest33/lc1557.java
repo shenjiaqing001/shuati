@@ -2,18 +2,17 @@ package BiweeklyContest33;
 
 //import javafx.util.Pair;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jiaqing Shen
  * @description
  * @date Created in 8/22/20
  */
-public class lc2 {
+public class lc1557 {
 
-
-    public List<Integer> findSmallestSetOfVertices(int n,
-                                                   List<List<Integer>> edges) {
+    public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges) {
         List<Integer>[] graph = new List[n];
         for (int i = 0; i < n; ++i) {
             graph[i] = new ArrayList<>();
