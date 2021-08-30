@@ -13,6 +13,10 @@ public class union {
     }
 
     void union(int x, int y) {
-        p[get(x)] = p[get(y)];
+        int a = get(x);
+        int b = get(y);
+        if (p[a] < p[b]) p[b] = p[a];
+        else p[a] = p[b];
     }
+
 }
