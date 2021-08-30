@@ -1,32 +1,23 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Jiaqing Shen
  * @description
  * @date Created in 2020/12/23
  */
 public class lc663 {
-    boolean equal = false;
-    long total = 0;
-
     public boolean checkEqualTree(TreeNode root) {
-        if (root.left == null && root.right == null) return false;
-        total = getTotal(root);
-        checkEqual(root);
-        return equal;
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        int sum = getsum(root, map);
+        if (sum == 0) return map.getOrDefault(sum, 0) > 1;
+        return sum % 2 == 0 && map.containsKey(sum / 2);
     }
 
-    private long getTotal(TreeNode root) {
+    public int getsum(TreeNode root, Map<Integer, Integer> map) {
         if (root == null) return 0;
-        return getTotal(root.left) + getTotal(root.right) + root.val;
-    }
-
-    private long checkEqual(TreeNode root) {
-        if (root == null || equal) return 0;
-
-        long curSum = checkEqual(root.left) + checkEqual(root.right) + root.val;
-        if (total - curSum == curSum) {
-            equal = true;
-            return 0;
-        }
-        return curSum;
+        int cur = root.val + getsum(root.left, map) + getsum(root.right, map);
+        map.put(cur, map.getOrDefault(cur, 0) + 1);
+        return cur;
     }
 }
