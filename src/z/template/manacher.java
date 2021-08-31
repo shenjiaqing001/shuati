@@ -21,16 +21,10 @@ public class manacher {
         int center = -1;
         int maxRight = -1;
         for (int i = 0; i < c.length; ++i) {
-            int r = 0;
-            if (i <= maxRight) {
-                r = Math.min(radius[center * 2 - i], maxRight - i);
-            }
-
-            while (i + r < c.length && i - r >= 0 &&
-                    c[i - r] == c[i + r]) {
+            int r = i > maxRight ? 1 : Math.min(radius[center * 2 - i], maxRight - i + 1);
+            while (i + r < c.length && i - r >= 0 && c[i - r] == c[i + r]) {
                 r++;
             }
-
             radius[i] = r - 1;
             if (i + radius[i] > maxRight) {
                 maxRight = i + radius[i];
