@@ -65,4 +65,35 @@ public class lc764 {
         }
         return max;
     }
+
+    public int orderOfLargestPlusSign2(int n, int[][] mines) {
+        int[][] map = new int[n][n];
+        for (int[] mine : mines) {
+            map[mine[0]][mine[1]] = 1;
+        }
+        int max = 0;
+        int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (map[i][j] == 1) continue;
+                int tmpMax = 1;
+                while (true) {
+                    boolean flag = false;
+                    for (int[] dir : dirs) {
+                        int x = i + dir[0] * tmpMax;
+                        int y = j + dir[1] * tmpMax;
+                        if (x < 0 || x >= n || y < 0 || y >= n) {
+                            flag = true;
+                            break;
+                        }
+                        if (map[x][y] == 1) flag = true;
+                    }
+                    if (flag) break;
+                    tmpMax++;
+                }
+                max = Math.max(max, tmpMax);
+            }
+        }
+        return max;
+    }
 }
