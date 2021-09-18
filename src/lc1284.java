@@ -14,12 +14,10 @@ public class lc1284 {
 
         int n = mat.length;
         int m = mat[0].length;
-        int index = 0;
         int now = 0;
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < m; ++j) {
-                now += mat[i][j] << index;
-                index++;
+                now += mat[i][j] << (i * m + n);
             }
         }
         if (now == 0) return 0;
