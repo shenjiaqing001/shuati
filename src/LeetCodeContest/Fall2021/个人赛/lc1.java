@@ -1,4 +1,4 @@
-package 秋季赛;
+package LeetCodeContest.Fall2021.个人赛;
 
 /**
  * @author Jiaqing Shen
