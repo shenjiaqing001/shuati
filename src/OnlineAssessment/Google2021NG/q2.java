@@ -69,4 +69,8 @@ public class q2 {
 
         return min;
     }
+
+    public static void main(String[] args) {
+        System.out.println(solution("aabaaabbbbbbbbaaaba"));
+    }
 }
