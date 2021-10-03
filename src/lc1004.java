@@ -12,7 +12,7 @@ public class lc1004 {
             if (A[right++] != 1) {
                 K--;
                 while (K < 0) {
-                    if (A[left++] == 0) K++;
+                    if (A[left++] != 1) K++;
                 }
             }
             max = Math.max(max, right - left);
