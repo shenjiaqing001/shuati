@@ -13,14 +13,14 @@ public class lc1438 {
         int left = 0;
         int res = 0;
         for (int i = 0; i < nums.length; ++i) {
-            while (!max.isEmpty() && max.peekLast() < nums[i]) max.pollLast();
-            while (!min.isEmpty() && min.peekLast() > nums[i]) min.pollLast();
-            max.addLast(nums[i]);
-            min.addLast(nums[i]);
+            while (!max.isEmpty() && nums[max.peekLast()] < nums[i]) max.pollLast();
+            while (!min.isEmpty() && nums[min.peekLast()] > nums[i]) min.pollLast();
+            max.addLast(i);
+            min.addLast(i);
 
-            while (max.peekFirst() - min.peekFirst() > limit) {
-                if (max.peekFirst() == nums[left]) max.pollFirst();
-                if (min.peekFirst() == nums[left]) min.pollFirst();
+            while (nums[max.peekFirst()] - nums[min.peekFirst()] > limit) {
+                if (max.peekFirst() == left) max.pollFirst();
+                if (min.peekFirst() == left) min.pollFirst();
                 left++;
             }
 
