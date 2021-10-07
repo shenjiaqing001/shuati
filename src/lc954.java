@@ -41,4 +41,25 @@ public class lc954 {
 
         return true;
     }
+
+    public boolean canReorderDoubled2(int[] arr) {
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        for (int num : arr) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        for (Integer key : map.keySet()) {
+            if (map.get(key) == 0) continue;
+            if (key < 0 && key % 2 == -1) return false;
+            int tmp = key > 0 ? key * 2 : key / 2;
+            if (tmp == 0) {
+                if (map.get(tmp) % 2 == 1) return false;
+            } else {
+                if (!map.containsKey(tmp)) return false;
+                int value = map.get(tmp);
+                if (value < map.get(key)) return false;
+                else map.put(tmp, value - map.get(key));
+            }
+        }
+        return true;
+    }
 }
