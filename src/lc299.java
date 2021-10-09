@@ -27,4 +27,26 @@ public class lc299 {
         }
         return A + "A" + B + "B";
     }
+
+    public String getHint2(String secret, String guess) {
+        char[] a = secret.toCharArray();
+        char[] b = guess.toCharArray();
+        int n = a.length;
+        int[] count = new int[10];
+        int countA = 0;
+        int countB = 0;
+        for (int i = 0; i < n; ++i) {
+            if (a[i] == b[i]) countA++;
+            else count[a[i] - '0']++;
+        }
+        for (int i = 0; i < n; ++i) {
+            if (a[i] != b[i]) {
+                if (count[b[i] - '0'] > 0) {
+                    count[b[i] - '0']--;
+                    countB++;
+                }
+            }
+        }
+        return countA + "A" + countB + "B";
+    }
 }
