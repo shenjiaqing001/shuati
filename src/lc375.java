@@ -6,8 +6,6 @@
 public class lc375 {
     public int getMoneyAmount(int n) {
         int[][] dp = new int[201][201];
-
-        dfs(dp, 1, n);
         return dfs(dp, 1, n);
     }
 
@@ -18,9 +16,7 @@ public class lc375 {
         for (int i = left; i <= right; ++i) {
             min = Math.min(min, Math.max(dfs(dp, left, i - 1), dfs(dp, i + 1, right)) + i);
         }
-        System.out.println(left + " " + right + " " + dp[left][right]);
         dp[left][right] = min;
         return min;
     }
-
 }
