@@ -37,7 +37,6 @@ public class q2 {
         // aabbbaaaaa
 
         // 对任意1个i， dpLeftToRight表示i的左边所有b删除需要的cost， dpRightToLeft表示i的右边所有b删除需要的cost
-
         char[] c = S.toCharArray();
         int n = c.length;
 
