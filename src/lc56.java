@@ -27,4 +27,30 @@ public class lc56 {
 
         return result.toArray(new int[result.size()][]);
     }
+
+    public int[][] merge2(int[][] intervals) {
+        TreeMap<Integer, Integer> treeMap = new TreeMap<>();
+        for (int[] interval : intervals) {
+            treeMap.put(interval[0], treeMap.getOrDefault(interval[0], 0) + 1);
+            treeMap.put(interval[1], treeMap.getOrDefault(interval[1], 0) - 1);
+        }
+        List<int[]> result = new ArrayList<>();
+        Integer start = treeMap.firstKey();
+        int sum = treeMap.get(start);
+        while (start != null) {
+            int last = start;
+            while (sum != 0) {
+                last = treeMap.ceilingKey(last + 1);
+                sum += treeMap.get(last);
+            }
+            result.add(new int[]{start, last});
+            start = treeMap.ceilingKey(last + 1);
+            if(start != null)
+                sum = treeMap.get(start);
+        }
+        return result.toArray(new int[result.size()][]);
+    }
+
+    
+
 }
