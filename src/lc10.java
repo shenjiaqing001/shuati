@@ -10,8 +10,7 @@ public class lc10 {
 
     public boolean dfs(char[] s, char[] p, int index1, int index2) {
         if (index2 == p.length) {
-            if (index1 == s.length) return true;
-            else return false;
+            return index1 == s.length;
         }
 
         if (p[index2] == '.') {
