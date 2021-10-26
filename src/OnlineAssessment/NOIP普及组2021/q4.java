@@ -1,4 +1,4 @@
-package NOIP2021J;
+package OnlineAssessment.NOIP普及组2021;
 
 import java.util.ArrayList;
 import java.util.List;

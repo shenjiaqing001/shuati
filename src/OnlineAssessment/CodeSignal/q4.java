@@ -1,4 +1,4 @@
-package OnlineAssessment.DataBrikes;
+package OnlineAssessment.CodeSignal;
 
 import java.util.TreeMap;
 
@@ -8,27 +8,22 @@ import java.util.TreeMap;
  * @date Created in 2021/10/19
  */
 public class q4 {
-    long[] field(long[][] chunks) {
+    long[][][] field(long[][] chunks) {
         TreeMap<Long, Long> treeMap = new TreeMap<>();
         int n = chunks.length;
-        long[] res = new long[n];
-        long sum = 0;
+        long[][][] res = new long[n][][];
         int idx = 0;
         for (long[] chunk : chunks) {
+            chunk[1] += 1;
             Long first = treeMap.floorKey(chunk[1]);
             if (first == null || treeMap.get(first) < chunk[0]) {
-                sum += chunk[1] - chunk[0] + 1;
                 treeMap.put(chunk[0], chunk[1]);
             } else if (first <= chunk[0] && treeMap.get(first) >= chunk[1]) {
                 // do nothing
             } else {
-                sum += chunk[1] - chunk[0] + 1;
                 long lo = chunk[0];
                 long hi = chunk[1];
                 while (first != null && treeMap.get(first) >= chunk[0]) {
-                    long interLo = Math.max(first, lo);
-                    long interHi = Math.min(treeMap.get(first), hi);
-                    sum -= interHi - interLo + 1;
                     hi = Math.max(treeMap.get(first), hi);
                     lo = Math.min(first, lo);
                     treeMap.remove(first);
@@ -36,7 +31,15 @@ public class q4 {
                 }
                 treeMap.put(lo, hi);
             }
-            res[idx++] = sum;
+
+            int idx2 = 0;
+            res[idx] = new long[treeMap.size()][2];
+            for (Long key : treeMap.keySet()) {
+                res[idx][idx2][0] = key;
+                res[idx][idx2][1] = treeMap.get(key) - 1;
+                idx2++;
+            }
+            idx++;
         }
         return res;
     }
