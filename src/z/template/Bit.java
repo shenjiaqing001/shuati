@@ -5,7 +5,7 @@ package z.template;
  * @description
  * @date Created in 2021/9/19
  */
-public class Gosper {
+public class Bit {
 
     // 枚举 C m选k。
     public static int Gosper(int m, int k) {
@@ -22,6 +22,16 @@ public class Gosper {
         System.out.println(count);
         return 0;
     }
+
+
+    public static void subsets(int state) {
+        for (int subset = state; subset > 0; subset = (subset - 1) & state) {
+//            DoSomething(subset);
+            System.out.println(subset + " " + Integer.toBinaryString(subset));
+        }
+    }
+
+
     //111
     //1011
     //1101
@@ -34,6 +44,8 @@ public class Gosper {
     //11100
 
     public static void main(String[] args) {
-        Gosper(5, 3);
+
+//        Gosper(5, 3);
+        subsets(7); // 111
     }
 }
