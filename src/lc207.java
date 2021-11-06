@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * @author Jiaqing Shen
@@ -10,9 +13,10 @@ public class lc207 {
         List<Integer>[] adj = new List[numCourses];
         int[] pre = new int[numCourses];
         for (int i = 0; i < adj.length; ++i) {
-            adj[i] = new LinkedList<>();
+            adj[i] = new ArrayList<>();
         }
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        Queue<Integer> pq = new ArrayDeque<>();
         for (int i = 0; i < prerequisites.length; ++i) {
             adj[prerequisites[i][1]].add(prerequisites[i][0]);
             pre[prerequisites[i][0]]++;
@@ -29,7 +33,6 @@ public class lc207 {
             take++;
             int now = pq.poll();
             for (Integer course : adj[now]) {
-                System.out.println(course);
                 pre[course]--;
                 if (pre[course] == 0)
                     pq.add(course);
