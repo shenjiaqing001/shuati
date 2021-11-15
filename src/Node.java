@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * @author Jiaqing Shen
  * @description
@@ -10,7 +12,7 @@ public class Node {
     public Node next;
     public Node parent;
     public Node child;
-
+    public List<Node> children;
 
     public Node() {
     }
