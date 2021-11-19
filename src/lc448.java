@@ -30,4 +30,22 @@ public class lc448 {
         }
         return res;
     }
+
+    public List<Integer> findDisappearedNumbers2(int[] nums) {
+        for (int i = 0; i < nums.length; ++i) {
+            if (nums[i] == i + 1) continue;
+            while (true) {
+                if (nums[i] == i + 1) break;
+                if (nums[nums[i] - 1] == nums[i]) break;
+                int tmp = nums[i];
+                nums[i] = nums[nums[i] - 1];
+                nums[tmp - 1] = tmp;
+            }
+        }
+        List<Integer> res = new ArrayList();
+        for (int i = 0; i < nums.length; ++i) {
+            if (nums[i] != i + 1) res.add(i + 1);
+        }
+        return res;
+    }
 }
