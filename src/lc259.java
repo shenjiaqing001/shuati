@@ -23,4 +23,17 @@ public class lc259 {
         }
         return res;
     }
+
+    public int threeSumSmaller2(int[] nums, int target) {
+        Arrays.sort(nums);
+        int res = 0;
+        for (int i = 0; i < nums.length; ++i) {
+            int k = nums.length - 1;
+            for (int j = i + 1; j < nums.length && j < k; ++j) {
+                while (j < k && nums[i] + nums[j] + nums[k] >= target) k--;
+                if (k > j) res += k - j;
+            }
+        }
+        return res;
+    }
 }
