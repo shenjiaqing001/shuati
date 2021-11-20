@@ -22,4 +22,13 @@ public class lc540 {
             return findSingle(nums, left, mid);
         }
     }
+
+
+    public int singleNonDuplicate2(int[] nums) {
+        int res = 0;
+        for (int num : nums) {
+            res ^= num;
+        }
+        return res;
+    }
 }
