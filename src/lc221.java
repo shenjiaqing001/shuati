@@ -20,6 +20,7 @@ public class lc221 {
                         max = Math.max(dp[i][j], max);
                     } else {
                         dp[i][j] = 1;
+                        max = Math.max(dp[i][j], max);
                     }
                 }
             }
