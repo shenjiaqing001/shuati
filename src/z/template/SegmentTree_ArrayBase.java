@@ -5,7 +5,7 @@ package z.template;
  * @description
  * @date Created in 2021/6/18
  */
-public class segmentTree {
+public class SegmentTree_ArrayBase {
     int[] segmentTree = new int[100000];
     int n = 0;
 
