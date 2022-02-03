@@ -1,4 +1,4 @@
-package mock.day0904;
+package mock.year2021.day0904;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
