@@ -45,7 +45,7 @@ public class Bit {
 
     public static void main(String[] args) {
 
-//        Gosper(5, 3);
-        subsets(7); // 111
+        Gosper(5, 3);
+//        subsets(7); // 111
     }
 }

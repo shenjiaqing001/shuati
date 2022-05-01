@@ -1,5 +1,3 @@
-import javax.swing.table.TableRowSorter;
-
 /**
  * @author Jiaqing Shen
  * @description
@@ -8,16 +6,17 @@ import javax.swing.table.TableRowSorter;
 public class lc208 {
     Trie trie = new Trie();
 
-    public class TrieNode {
-        TrieNode[] children;
-        boolean real = false;
-
-        public TrieNode() {
-            children = new TrieNode[26];
-        }
-    }
 
     public class Trie {
+        public class TrieNode {
+            TrieNode[] children;
+            boolean isWord = false;
+
+            public TrieNode() {
+                children = new TrieNode[26];
+            }
+        }
+
         TrieNode root;
 
         /**
@@ -32,13 +31,13 @@ public class lc208 {
          */
         public void insert(String word) {
             TrieNode tmp = root;
-            for (int i = 0; i < word.length(); ++i) {
-                if (tmp.children[word.charAt(i) - 'a'] == null) {
-                    tmp.children[word.charAt(i) - 'a'] = new TrieNode();
+            for (char c : word.toCharArray()) {
+                if (tmp.children[c - 'a'] == null) {
+                    tmp.children[c - 'a'] = new TrieNode();
                 }
-                tmp = tmp.children[word.charAt(i) - 'a'];
+                tmp = tmp.children[c - 'a'];
             }
-            tmp.real = true;
+            tmp.isWord = true;
         }
 
         /**
@@ -46,13 +45,12 @@ public class lc208 {
          */
         public boolean search(String word) {
             TrieNode tmp = root;
-            for (int i = 0; i < word.length(); ++i) {
-                if (tmp.children[word.charAt(i) - 'a'] == null)
+            for (char c : word.toCharArray()) {
+                if (tmp.children[c - 'a'] == null)
                     return false;
-                tmp = tmp.children[word.charAt(i) - 'a'];
+                tmp = tmp.children[c - 'a'];
             }
-            if (tmp.real == false) return false;
-            return true;
+            return tmp.isWord;
         }
 
         /**
@@ -60,10 +58,11 @@ public class lc208 {
          */
         public boolean startsWith(String prefix) {
             TrieNode tmp = root;
-            for (int i = 0; i < prefix.length(); ++i) {
-                if (tmp.children[prefix.charAt(i) - 'a'] == null)
+            for (char c : prefix.toCharArray()) {
+                if (tmp.children[c - 'a'] == null) {
                     return false;
-                tmp = tmp.children[prefix.charAt(i) - 'a'];
+                }
+                tmp = tmp.children[c - 'a'];
             }
             return true;
         }
@@ -75,7 +74,6 @@ public class lc208 {
         System.out.println(t.trie.search("apple"));
         System.out.println(t.trie.search("app"));
         System.out.println(t.trie.startsWith("app"));
-
     }
 
 /**

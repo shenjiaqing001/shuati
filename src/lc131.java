@@ -33,7 +33,7 @@ public class lc131 {
             return;
         }
         for (int i = pos; i < s.length(); ++i) {
-            if (dp[i][pos] == true) {
+            if (dp[i][pos]) {
                 tmp.add(s.substring(pos, i + 1));
                 find(res, tmp, s, i + 1, dp);
                 tmp.remove(tmp.size() - 1);

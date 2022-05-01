@@ -23,9 +23,8 @@ public class lc973 {
         }
 
         int[][] res = new int[K][2];
-        for (int i = 0; i < q.size(); ++i) {
+        for (int i = 0; i < K; ++i) {
             int[] now = q.poll();
-            System.out.println(now[0]+" "+ now[1] + " "+ now[2] );
             res[i][0] = now[1];
             res[i][1] = now[2];
         }

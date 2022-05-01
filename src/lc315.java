@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Jiaqing Shen
@@ -26,49 +24,95 @@ public class lc315 {
         for (int i = 0; i < n; ++i) {
             numbers[i] = new NumNode(nums[i], i);
         }
-        List<NumNode> sortedNum = mergeSort(numbers, 0, n - 1);
+        Queue<NumNode> sortedNum = mergeSort(numbers, 0, n - 1);
         List<Integer> res = new ArrayList<>(n);
         for (int i = 0; i < n; ++i) res.add(0);
 
-        for (NumNode num : sortedNum) {
+        while (!sortedNum.isEmpty()) {
+            NumNode num = sortedNum.poll();
             res.set(num.index, num.count);
         }
         return res;
     }
 
-    public List<NumNode> mergeSort(NumNode[] nums, int left, int right) {
+    public Queue<NumNode> mergeSort(NumNode[] nums, int left, int right) {
         if (left == right) {
-            List<NumNode> list = new LinkedList<>();
+            Queue<NumNode> list = new ArrayDeque<>();
             list.add(nums[left]);
             return list;
         }
 
         int mid = (left + right) / 2;
-        List<NumNode> lList = mergeSort(nums, left, mid);
-        List<NumNode> rList = mergeSort(nums, mid + 1, right);
+        Queue<NumNode> lList = mergeSort(nums, left, mid);
+        Queue<NumNode> rList = mergeSort(nums, mid + 1, right);
 
-        List<NumNode> res = new LinkedList<>();
+        Queue<NumNode> res = new ArrayDeque<>();
         int count = 0;
         while (lList.size() > 0 && rList.size() > 0) {
-            if (lList.get(0).num > rList.get(0).num) {
+            if (lList.peek().num > rList.peek().num) {
                 count++;
-                res.add(rList.remove(0));
+                res.add(rList.poll());
             } else {
-                NumNode tmp = lList.remove(0);
+                NumNode tmp = lList.poll();
                 tmp.count += count;
                 res.add(tmp);
             }
         }
         while (rList.size() > 0) {
-            res.add(rList.remove(0));
+            res.add(rList.poll());
         }
 
         while (lList.size() > 0) {
-            NumNode tmp = lList.remove(0);
+            NumNode tmp = lList.poll();
             tmp.count += count;
             res.add(tmp);
         }
 
         return res;
+    }
+
+    class BinaryIndexedTree {
+        int[] bit;
+
+        BinaryIndexedTree(int n) {
+            bit = new int[n + 1];
+        }
+
+        int lowbit(int i) {
+            return i & (-i);
+        }
+
+        void update(int i) {
+            while (i < bit.length) {
+                bit[i] += 1;
+                i += lowbit(i);
+            }
+        }
+
+        int getSum(int i) {
+            int count = 0;
+            while (i >= 1) {
+                count += bit[i];
+                i -= lowbit(i);
+            }
+            return count;
+        }
+    }
+
+    public List<Integer> countSmaller2(int[] nums) {
+        int n = nums.length;
+        BinaryIndexedTree bit = new BinaryIndexedTree(20000+10);
+        List<Integer> res = new ArrayList<>();
+        for (int i = nums.length - 1; i >= 0; --i) {
+            res.add(bit.getSum(nums[i] + 10001));
+            bit.update(nums[i] + 10002);
+        }
+        Collections.reverse(res);
+        return res;
+    }
+
+    public static void main(String[] args) {
+        lc315 test = new lc315();
+        test.countSmaller2(new int[]{5, 2, 6, 1});
     }
 }

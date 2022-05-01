@@ -52,4 +52,64 @@ public class lc18 {
 
         return new ArrayList<List<Integer>>(res);
     }
+
+
+    class Pair {
+        int x;
+        int y;
+
+        public Pair(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public String toString() {
+            return this.x + " - " + this.y;
+        }
+    }
+
+    public List<List<Integer>> fourSum2(int[] nums, int target) {
+        HashMap<Integer, List<Pair>> map = new HashMap<>();
+        Arrays.sort(nums);
+
+        for (int i = 0; i < nums.length; i++) {
+            // if (i != 0 && nums[i] == nums[i - 1]) continue;
+            for (int j = i + 1; j < nums.length; j++) {
+                if (j != i + 1 && nums[j] == nums[j - 1]) continue;
+                int sum = nums[i] + nums[j];
+                Pair p = new Pair(i, j);
+                map.putIfAbsent(sum, new ArrayList<>());
+                map.get(sum).add(p);
+            }
+        }
+
+
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (i != 0 && nums[i] == nums[i - 1]) continue;
+
+            for (int j = i + 1; j < nums.length; j++) {
+                if (j != i + 1 && nums[j] == nums[j - 1]) continue;
+
+                int sum = nums[i] + nums[j];
+                if (map.containsKey(target - sum)) {
+                    List<Pair> pairs = map.get(target - sum);
+                    for (Pair pair : pairs) {
+                        int x = pair.x;
+                        int y = pair.y;
+                        if (i < x && j < x) {
+                            if (x != j + 1 && nums[x] == nums[x - 1]) continue;
+                            List<Integer> tmp = new ArrayList<>();
+                            tmp.add(nums[i]);
+                            tmp.add(nums[j]);
+                            tmp.add(nums[x]);
+                            tmp.add(nums[y]);
+                            res.add(tmp);
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
 }

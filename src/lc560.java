@@ -8,30 +8,20 @@ import java.util.Map;
  * @author Jiaqing Shen
  * @description
  * @date Created in 8/30/20
+ * @date Modified in 02/10/22
  */
 public class lc560 {
     public int subarraySum(int[] nums, int k) {
-        Map<Integer, List<Integer>> map = new HashMap<>();
-        int[] sum = new int[nums.length];
+        Map<Integer, Integer> map = new HashMap<>();
+        int sum = 0;
         int res = 0;
-        for (int i = 0; i < nums.length; ++i) {
-            if (i == 0)
-                sum[i] = nums[0];
-            else
-                sum[i] = nums[i] + sum[i - 1];
-
-            map.putIfAbsent(sum[i], new LinkedList<>());
-            map.get(sum[i]).add(i);
-        }
-        for (int i = 0; i < nums.length; ++i) {
-            if (sum[i] == k) res++;
-            if (map.containsKey(sum[i] - k)) {
-                List<Integer> list = map.get(sum[i] - k);
-                for (Integer index : list) {
-                    if (index < i)
-                        res++;
-                }
+        map.put(0, 1);
+        for (int num : nums) {
+            sum += num;
+            if (map.containsKey(sum - k)) {
+                res += map.get(sum - k);
             }
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
         return res;
     }

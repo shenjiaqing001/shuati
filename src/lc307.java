@@ -1,3 +1,5 @@
+import z.template.SegmentTree_NodeBase;
+
 /**
  * @author Jiaqing Shen
  * @description
@@ -64,6 +66,69 @@ public class lc307 {
 
         public int sumRange(int left, int right) {
             return sum(1, 0, n, left, right);
+        }
+    }
+
+
+    class NumArray2 {
+
+        class SegmentTree {
+            int leftBound;
+            int rightBound;
+            SegmentTree leftChild;
+            SegmentTree rightChild;
+            int val;
+            int sum = 0;
+
+            SegmentTree(int[] nums, int leftBound, int rightBound) {
+                this.leftBound = leftBound;
+                this.rightBound = rightBound;
+                if (leftBound == rightBound) {
+                    this.val = nums[leftBound];
+                    this.sum = nums[leftBound];
+                } else {
+                    int mid = leftBound + (rightBound - leftBound) / 2;
+                    this.leftChild = new SegmentTree(nums, leftBound, mid);
+                    this.rightChild = new SegmentTree(nums, mid + 1, rightBound);
+                    this.sum = this.leftChild.sum + this.rightChild.sum;
+                }
+            }
+
+            int sum(int left, int right) {
+                if (left <= leftBound && rightBound <= right) {
+                    return sum;
+                } else if (leftBound > right || rightBound < left) {
+                    return 0;
+                } else {
+                    return leftChild.sum(left, right) + rightChild.sum(left, right);
+                }
+            }
+
+            void update(int index, int val) {
+                if (leftBound == index && rightBound == index) {
+                    this.val = val;
+                    this.sum = val;
+                } else if (index >= leftBound && index <= rightBound) {
+                    leftChild.update(index, val);
+                    rightChild.update(index, val);
+                    this.sum = leftChild.sum + rightChild.sum;
+                }
+            }
+        }
+
+        SegmentTree root;
+
+        public NumArray2(int[] nums) {
+            int n = nums.length;
+            root = new SegmentTree(nums, 0, n - 1);
+        }
+
+        public void update(int index, int val) {
+            root.update(index, val);
+        }
+
+        public int sumRange(int left, int right) {
+            return root.sum(left, right);
         }
     }
 }
