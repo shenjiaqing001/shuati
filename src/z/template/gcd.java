@@ -7,7 +7,7 @@ package z.template;
  */
 public class gcd {
     public int gcd(int a, int b) {
-        int tmp = 1;
+        int tmp;
         while (b > 0) {
             tmp = a;
             a = b;
